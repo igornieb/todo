@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+    <br>
+    <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">{{ title}}</h3>
+                    </div>
+                </div>
+    <div class="justify-center">
+        <form style="padding-left: 1em" method="post">
+            {% csrf_token %}
+            <p>{{ form.title.label }}:</p>
+            <input class="form-control w-50" name="title" type="text" placeholder="{{ task.title }}">
+            <br>
+            <p><p>{{ form.task.label }}:</p></p>
+            <textarea class="form-control w-50" name="task" rows="3" placeholder="{{ task.task }}"></textarea>
+            <br>
+            <input type="submit" class="btn btn-primary" value="{{ title }}">
+        </form>
+    </div>
+{% endblock %}
