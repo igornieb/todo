@@ -9,9 +9,9 @@ Simple todo app made in Django with Bootsrap frontend and rest api
    3. [/api/active](#apiactive)
    4. [/api/archive](#apiarchive)
    5. [/api/account](#apiaccount)
-## 2. Live Website
+## 1. Live Website
 LINK
-## 3. API endpoints
+## 2. API endpoints
 ### /api/login/
 #### POST
 Returns refresh and access token.
