@@ -59,7 +59,7 @@ class TaskEdit(LoginRequiredMixin, UpdateView):
     form_class = TaskForm
     template_name = 'task_form.html'
     extra_context = {'title': "Edit task"}
-    success_url = reverse_lazy('tasklist')
+    success_url = reverse_lazy('task-list')
 
     def get_object(self, **kwargs):
         try:
