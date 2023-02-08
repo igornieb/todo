@@ -1,19 +1,18 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.contrib.auth.models import auth
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.views.generic import ListView, View
-from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import *
 from django.http import HttpResponseRedirect, Http404
 from core.forms import *
 from datetime import datetime
-
 
 class TaskList(LoginRequiredMixin, ListView):
     def get(self, request):
@@ -32,6 +31,24 @@ class TaskList(LoginRequiredMixin, ListView):
 
     def handle_no_permission(self):
         return redirect('login')
+
+class TaskFiletredList(LoginRequiredMixin, ListView):
+    def get_queryset(self, query):
+        account = Account.objects.get(user=self.request.user)
+        return Task.objects.filter(Q(owner=account) & Q(title__icontains=query) | Q(task__icontains=query))
+
+    def get(self, request, query):
+        tasks = self.get_queryset(query)
+        paginator = Paginator(tasks, 100)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context = {
+            'current_tasks': page_obj,
+        }
+        return render(request, 'index.html', context)
+    def handle_no_permission(self):
+        return redirect('login')
+
 
 
 class TaskCreate(LoginRequiredMixin, CreateView):
