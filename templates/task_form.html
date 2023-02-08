@@ -10,10 +10,11 @@
         <form style="padding-left: 1em" method="post">
             {% csrf_token %}
             <p>{{ form.title.label }}:</p>
-            <input class="form-control w-50" name="title" type="text" value = {{ task.title }} placeholder="{{ task.title }}">
+            <input class="form-control w-50" name="title" type="text" value = "{{ task.title }}">
+            {{ task.title }}
             <br>
             <p><p>{{ form.task.label }}:</p></p>
-            <textarea class="form-control w-50" name="task" rows="3" placeholder="{{ task.task }}">{{ task.task }}</textarea>
+            <textarea class="form-control w-50" name="task" rows="3">{{ task.task }}</textarea>
             <br>
             <input type="submit" class="btn btn-primary" value="{{ title }}">
         </form>
