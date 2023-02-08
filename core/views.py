@@ -33,17 +33,18 @@ class TaskList(LoginRequiredMixin, ListView):
         return redirect('login')
 
 class TaskFiletredList(LoginRequiredMixin, ListView):
-    def get_queryset(self, query):
+    def get_queryset(self):
+        query = self.request.POST.get('query')
         account = Account.objects.get(user=self.request.user)
         return Task.objects.filter(Q(owner=account) & Q(title__icontains=query) | Q(task__icontains=query))
 
-    def get(self, request, query):
-        tasks = self.get_queryset(query)
+    def post(self, request):
+        tasks = self.get_queryset()
         paginator = Paginator(tasks, 100)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         context = {
-            'current_tasks': page_obj,
+            'filtered_tasks': page_obj,
         }
         return render(request, 'index.html', context)
     def handle_no_permission(self):
