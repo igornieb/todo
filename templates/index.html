@@ -22,6 +22,27 @@
                     </div>
                 </div>
     {% endif %}
+    {% if filtered_tasks %}
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Search:</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="container">
+                            <div class="row">
+                                {% for task in filtered_tasks %}
+                                <div class="col-md-3" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
+                                    <p style="padding-left: 10px;">{{ task.task }}</p><a style="text-decoration: none; color:green" href="{% url 'change-task-state' task.pk %}"><i class="far fa-check-circle" style="padding-left: 6px;"></i></a><a style="text-decoration: none; color:none" href="{% url 'task-edit' task.pk %}"><i class="far fa-edit" style="padding-left: 20px;"></i></a><a href="{% url 'task-delete' task.pk %}" style="text-decoration: none; color:red" href=""><i class="far fa-times-circle" style="padding-left: 20px;"></i></a>
+                                    <code style="padding-left: 33px;">{{ task.date|date:"D d m Y H:i" }}</code>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% endif %}
     {% if archive_tasks %}
                 <div id="content-1">
                     <div class="container-fluid">

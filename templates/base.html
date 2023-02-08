@@ -31,8 +31,12 @@
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-6 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop-1" type="button"><i class="fas fa-bars"></i></button>
-                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..."><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                        <form method="post" action="{% url 'search' %}" class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                {% csrf_token %}
+                                <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." name="query">
+                                <button class="btn btn-primary py-0" type="submit"> <i class="fas fa-search"></i></button>
+                            </div>
                         </form>
                     </div>
                     <a href="{% url 'task-create' %}" style="margin-right: 2em" class="w-25 btn btn-primary" type="button">New task</a>
