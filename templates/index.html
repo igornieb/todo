@@ -8,9 +8,9 @@
                         <h3 class="text-dark mb-0">current task list</h3>
                             <div class="row">
                                 {% for task in current_tasks %}
-                                <div class="col-md-2" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
+                                <div class="col-md-3" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
                                     <p style="padding-left: 10px;">{{ task.task }}</p><a style="text-decoration: none; color:green" href="{% url 'change-task-state' task.pk %}"><i class="far fa-check-circle" style="padding-left: 6px;"></i></a><a style="text-decoration: none; color:none" href="{% url 'task-edit' task.pk %}"><i class="far fa-edit" style="padding-left: 20px;"></i></a><a href="{% url 'task-delete' task.pk %}" style="text-decoration: none; color:red" href=""><i class="far fa-times-circle" style="padding-left: 20px;"></i></a>
-                                    <code style="padding-left: 33px;">{{ task.date|date:"D d m Y H:i" }}</code>
+                                    <p><code>{{ task.date|date:"D d m Y H:i" }}</code></p>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -25,10 +25,10 @@
                             <h3 class="text-dark mb-0">Search:</h3>
                             <div class="row">
                                 {% for task in filtered_tasks %}
-                                <div class="col-md-3" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
-                                    <p style="padding-left: 10px;">{{ task.task }}</p><a style="text-decoration: none; color:green" href="{% url 'change-task-state' task.pk %}"><i class="far fa-check-circle" style="padding-left: 6px;"></i></a><a style="text-decoration: none; color:none" href="{% url 'task-edit' task.pk %}"><i class="far fa-edit" style="padding-left: 20px;"></i></a><a href="{% url 'task-delete' task.pk %}" style="text-decoration: none; color:red" href=""><i class="far fa-times-circle" style="padding-left: 20px;"></i></a>
-                                    <code style="padding-left: 33px;">{{ task.date|date:"D d m Y H:i" }}</code>
-                                </div>
+                                    <div class="col-md-3" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
+                                        <p style="padding-left: 10px;">{{ task.task }}</p><a style="text-decoration: none; color:green" href="{% url 'change-task-state' task.pk %}"><i class="far fa-check-circle" style="padding-left: 6px;"></i></a><a style="text-decoration: none; color:none" href="{% url 'task-edit' task.pk %}"><i class="far fa-edit" style="padding-left: 20px;"></i></a><a href="{% url 'task-delete' task.pk %}" style="text-decoration: none; color:red" href=""><i class="far fa-times-circle" style="padding-left: 20px;"></i></a>
+                                        <p><code>{{ task.date|date:"D d m Y H:i" }}</code></p>
+                                    </div>
                                 {% endfor %}
                             </div>
                         </div>
@@ -45,9 +45,9 @@
                                     {% for task in archive_tasks %}
                                         <div class="col-md-3" style="margin:1em ;border:1px solid lightslategray; border-radius: 0.3em"><strong>{{ task.title }}</strong>
                                             <p style="padding-left: 10px;">{{ task.task }}</p><a style="text-decoration: none; color:green" href="{% url 'change-task-state' task.pk %}"><i class="far fa-check-circle" style="padding-left: 6px;"></i></a><a style="text-decoration: none; color:none" href="{% url 'task-edit' task.pk %}"><i class="far fa-edit" style="padding-left: 20px;"></i></a><a href="{% url 'task-delete' task.pk %}" style="text-decoration: none; color:red" href=""><i class="far fa-times-circle" style="padding-left: 20px;"></i></a>
-                                            <code style="padding-left: 33px;">{{ task.date|date:"D d m Y H:i" }}</code>
+                                            <p><code>{{ task.date|date:"D d m Y H:i" }}</code></p>
                                         </div>
-                                {% endfor %}
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
