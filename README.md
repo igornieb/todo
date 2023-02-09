@@ -1,6 +1,10 @@
 # todo
 Simple todo app made in Django with Bootsrap frontend and rest api
 
+![image](https://user-images.githubusercontent.com/66256669/217812720-97e96de0-1ce0-40af-9872-0d32d9236517.png)
+
+![image](https://user-images.githubusercontent.com/66256669/217812274-138657d2-81c3-4f9c-a376-69242fbf8c99.png)
+
 # Table of Contents
 1. [Live website](#2-live-website)
 2. [Api endpoints](#3-api-endpoints)
@@ -10,7 +14,7 @@ Simple todo app made in Django with Bootsrap frontend and rest api
    4. [/api/archive](#apiarchive)
    5. [/api/account](#apiaccount)
 ## 1. Live Website
-LINK
+[LINK](https://web-production-b4d0.up.railway.app/)
 ## 2. API endpoints
 ### /api/login/
 #### POST
