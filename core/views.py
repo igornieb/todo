@@ -36,7 +36,7 @@ class TaskFiletredList(LoginRequiredMixin, ListView):
     def get_queryset(self):
         query = self.request.POST.get('query')
         account = Account.objects.get(user=self.request.user)
-        return Task.objects.filter(Q(owner=account) & Q(title__icontains=query) | Q(task__icontains=query))
+        return Task.objects.filter(Q(owner=account) &( Q(title__icontains=query) | Q(task__icontains=query)))
 
     def post(self, request):
         tasks = self.get_queryset()
