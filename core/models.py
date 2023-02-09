@@ -17,7 +17,7 @@ class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    profile_picture = models.ImageField(upload_to=media_path) #, default='media/blank.png')
+    profile_picture = models.ImageField(upload_to=media_path, default='static/media/blank.png')
 
 
 def create_account(sender, instance, created, **kwargs):
