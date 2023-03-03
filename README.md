@@ -16,7 +16,7 @@ Simple todo app made in Django with Bootsrap frontend and rest api
 ## 1. Live Website
 [LINK](https://web-production-4f41.up.railway.app/)
 ## 2. API endpoints
-### /api/login/
+### /api/token/
 #### POST
 Returns refresh and access token.
 
@@ -24,11 +24,10 @@ Success code: ```200```
 
 Error code: 
 
-```400``` - bad request
 
-``401`` - bad credentials
+``401`` - unauthorized
 
-Example input:
+Example request:
 
 ```
 {
@@ -37,9 +36,7 @@ Example input:
 }
 ```
 
-
-
-Example return:
+Example response:
 
 ```
 {
@@ -56,15 +53,13 @@ Success code: ```200```
 
 Error code: 
 
-```400``` - bad request
-
-``401`` - bad credentials
+``401`` - unauthorized
 
 Example input:
 
 ```
 {
-    "refresh": "your_refresh_token"
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NjIwMzE5NiwiaWF0IjoxNjczNjExMTk2LCJqdGkiOiI1OWIzM2NmNjc4MzA0MTgzYTgyNjg0YjQzZDc5ZTBmOSIsInVzZXJfaWQiOjJ9.Zrl09OfHO_ipqgIrrmcb5D7L8VT4YZUmPQBMrX-0Y0E"
 }
 ```
 
@@ -76,6 +71,7 @@ Example return:
     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY3NjIwMzE5NiwiaWF0IjoxNjczNjExMTk2LCJqdGkiOiI1OWIzM2NmNjc4MzA0MTgzYTgyNjg0YjQzZDc5ZTBmOSIsInVzZXJfaWQiOjJ9.Zrl09OfHO_ipqgIrrmcb5D7L8VT4YZUmPQBMrX-0Y0E"
 }
 ```
+
 
 
 ### /api/active/
